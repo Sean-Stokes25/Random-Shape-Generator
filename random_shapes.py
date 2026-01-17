@@ -6,28 +6,30 @@ from time import sleep
 import random
 t = turtle.Turtle()
 
+#sets screen size
 screen = turtle.Screen()
 screen.setup(900, 700)
-
 turtle.tracer(0)
+
 shapes = ["square","circle","triangle"]
 
 colours = ["red","green","yellow","blue"]
 
+#Valid triangle sides
 triangle_sizes = [(50,70,40),(30,40,50),(50,70,90)]
 
+#creates triangle objects
 def triangle_create():
     sides = random.choice(triangle_sizes)
-    
     return Triangle(colour = random.choice(colours) ,is_filled = False, side_a = sides[0],side_b = sides[1],side_c = sides[2],turtle_obj = t)
-
+#creates square objects
 def square_create():
     return Square(colour = random.choice(colours),is_filled = True, width = random.randint(30,80),turtle_obj = t)
-
+#creates circle objects
 def circle_create():
     return Circle(colour = random.choice(colours),is_filled = True, radius = random.randint(10,40), turtle_obj = t)
 
-
+#moves the turtle cursor to a random point on the screen
 def move_position():
     x = random.randint(-400,400)
     y = random.randint(-300,300)
@@ -35,6 +37,7 @@ def move_position():
     t.goto(x,y)
     t.pendown()
 
+#creates 40 to 60 random shapes and displays them all over the screen
 while True:
     for x in range(random.randint(40,60)):
         match random.choice(shapes):
@@ -48,6 +51,7 @@ while True:
                 move_position()
                 circle_create().draw()
     sleep(0.5)
-    t.reset() 
+    t.reset() #resets the screen
         
+
         
